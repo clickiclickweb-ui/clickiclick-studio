@@ -1,6 +1,89 @@
 /* ============================================
    CLICKICLICK.studio — Global Styles
-   Sistema cromático oficial + base reset
+   Sistema tipográfico + cromático oficial + base reset
+   ============================================ */
+
+/* ============================================
+   FONT FACES — self-hosted
+   ============================================ */
+
+/* Fraunces — Display (editorial serif) */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/fraunces/Fraunces-500.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/fraunces/Fraunces-500italic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/fraunces/Fraunces-700.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('/fonts/fraunces/Fraunces-900.woff2') format('woff2');
+}
+
+/* Switzer — Body (sans-serif) */
+@font-face {
+  font-family: 'Switzer';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('/fonts/switzer/Switzer-Light.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Switzer';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/switzer/Switzer-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Switzer';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/switzer/Switzer-Medium.woff2') format('woff2');
+}
+
+/* Gambarino — Display accent (signature frases) */
+@font-face {
+  font-family: 'Gambarino';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/gambarino/Gambarino-Regular.woff2') format('woff2');
+}
+
+/* ============================================
+   TAILWIND — directivas de inyección
+   ============================================ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   CUSTOM PROPERTIES — sistema cromático oficial
    ============================================ */
 
 :root {
@@ -25,7 +108,10 @@
   --lavender-dust:  #9B8CB5;
 }
 
-/* Reset mínimo — sin dependencias de librerías */
+/* ============================================
+   BASE RESET
+   ============================================ */
+
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -46,7 +132,10 @@ html, body {
   min-height: 100vh;
 }
 
-/* Respeta prefers-reduced-motion globalmente */
+/* ============================================
+   ACCESIBILIDAD — respeta prefers-reduced-motion
+   ============================================ */
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
