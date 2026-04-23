@@ -4,16 +4,28 @@ export default {
   theme: {
     extend: {
       colors: {
-        terracotta: 'var(--terracotta)',
-        cream:      'var(--cream)',
-        ink:        'var(--ink)',
-        olive:      'var(--olive)',
-        brass:      'var(--brass)',
-        muted:      'var(--muted)',
-        line:       'var(--line)',
+        // Base
+        ink:              'var(--ink)',
+        cream:            'var(--cream)',
+        'cream-soft':     'var(--cream-soft)',
+
+        // Signature
+        garnet:           'var(--garnet)',
+        'garnet-deep':    'var(--garnet-deep)',
+
+        // Contrapunto
+        'teal-night':     'var(--teal-night)',
+        'teal-luminous':  'var(--teal-luminous)',
+
+        // Oro
+        'gold-aged':      'var(--gold-aged)',
+
+        // Secretos
+        moss:             'var(--moss)',
+        'lavender-dust':  'var(--lavender-dust)',
       },
       fontFamily: {
-        display: ['Bespoke Serif', 'Georgia', 'serif'],
+        display: ['Fraunces', 'Georgia', 'serif'],
         body:    ['Switzer', 'system-ui', 'sans-serif'],
         accent:  ['Gambarino', 'Georgia', 'serif'],
       },

@@ -1,0 +1,57 @@
+/* ============================================
+   CLICKICLICK.studio — Global Styles
+   Sistema cromático oficial + base reset
+   ============================================ */
+
+:root {
+  /* BASE — 85% de la web */
+  --ink:            #0A0706;
+  --cream:          #EDE4CE;
+  --cream-soft:     #B8AB90;
+
+  /* SIGNATURE — 25% */
+  --garnet:         #A31E38;
+  --garnet-deep:    #6E1425;
+
+  /* CONTRAPUNTO — 15% */
+  --teal-night:     #0B2E3E;
+  --teal-luminous:  #7CAFAE;
+
+  /* ORO — ≤2%, solo 3 usos semánticos (MMXXVI, firma, ornamentales) */
+  --gold-aged:      #8A7046;
+
+  /* SECRETOS — ≤1%, una aparición única cada uno */
+  --moss:           #2D3A2A;
+  --lavender-dust:  #9B8CB5;
+}
+
+/* Reset mínimo — sin dependencias de librerías */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--ink);
+  color: var(--cream);
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Respeta prefers-reduced-motion globalmente */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
