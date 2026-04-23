@@ -23,3 +23,18 @@ dist-ssr
 *.sln
 *.sw?
 .vercel
+
+# Claude skills & agents (local only)
+.claude/
+.agents/
+skills-lock.json
+
+# Claude skills & agents (local only)
+.claude/
+.agents/
+skills-lock.json
+
+# Claude skills & agents (local only)
+.claude/
+.agents/
+skills-lock.json
