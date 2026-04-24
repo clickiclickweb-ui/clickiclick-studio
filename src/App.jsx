@@ -1,4 +1,8 @@
+import { useSmoothScroll } from './hooks/useSmoothScroll';
+
 function App() {
+  useSmoothScroll();
+
   return (
     <div style={{ padding: '4rem 2rem', maxWidth: '960px', margin: '0 auto' }}>
 
@@ -60,6 +64,13 @@ function App() {
           Crafted in Barcelona. Signed for you.
         </p>
       </section>
+
+      {/* ========= SMOKE TEST SCROLL — eliminar en Fase 4 ========= */}
+      <div style={{ height: '200vh', marginTop: '4rem', borderTop: '1px solid rgba(237, 228, 206, 0.15)' }}>
+        <p className="font-body text-cream-soft" style={{ fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase', padding: '2rem 0' }}>
+          Smooth scroll smoke test · scroll down
+        </p>
+      </div>
 
     </div>
   );
