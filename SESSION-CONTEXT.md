@@ -296,6 +296,22 @@ Crear `<Signature />` React component en Fase 3 aunque no se use hasta Hero (Fas
 
 ---
 
+### ✅ FASE 3 PASO 5 — Smooth scroll hook (Abril 24)
+- Creado src/hooks/useSmoothScroll.js
+- Lenis + GSAP ScrollTrigger sincronizados vía gsap.ticker (un solo clock)
+- duration 1.8 para inercia cinematográfica (Royal Palace pattern, INSPIRATIONS §4)
+- useRef guard añadido para neutralizar React 18 StrictMode double-mount
+  (patrón obligatorio para librerías con ciclo de vida propio: Lenis, GSAP, Three.js)
+- lagSmoothing(0) desactivado para evitar desincronización GSAP↔Lenis
+- window.__lenis expuesto solo en DEV para debugging desde consola
+- Integrado en App.jsx + bloque smoke test scroll temporal (eliminar en Fase 4)
+- Verificado en localhost:5173 — inercia visible, consola limpia
+- Commit: fda50f3 en reset/v2-foundation
+
+**Aprendizaje importante para futuras fases:**
+La "U" de VS Code puede ser engañosa. Fuente de verdad = `cat` desde terminal.
+Librerías con ciclo de vida (Lenis, GSAP, R3F) siempre necesitan ref guard en StrictMode.
+
 **Versión:** 1.1
 **Fecha:** 23 Abril 2026 (tarde)
 **Cambios v1.1:** sección "Cómo se usa Claude (3 frentes)", corrección Gambarino Italic → Regular, checklist granular de Paso 4b, incorporación del bug activo
