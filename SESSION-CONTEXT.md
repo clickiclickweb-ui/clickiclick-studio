@@ -312,6 +312,31 @@ Crear `<Signature />` React component en Fase 3 aunque no se use hasta Hero (Fas
 La "U" de VS Code puede ser engañosa. Fuente de verdad = `cat` desde terminal.
 Librerías con ciclo de vida (Lenis, GSAP, R3F) siempre necesitan ref guard en StrictMode.
 
+### ✅ FASE 3 PASO 6 — Signature component (Abril 24)
+- Creado src/components/brand/Signature.jsx
+- SVG inline con fill="currentColor" → color heredado vía Tailwind text-*
+- Props: className (sizing + color), aria-label (default "Diego Puelles"),
+  aria-hidden (para uso decorativo), ...rest spread
+- Decisión: sizing vía clases Tailwind (w-9, w-32) en lugar de prop size numérico
+  — mantiene consistencia con el sistema y permite responsive nativo
+- Decisión: color vía className text-* en lugar de prop variant — más explícito,
+  menos magia, legible al instante en JSX
+- Verificado en localhost:5173 con tres firmas (cream, garnet, gold-aged)
+- Bloque de prueba retirado tras verificación; import mantenido para Paso 7
+- Commit: 742387a en reset/v2-foundation
+
+**Aprendizaje importante para futuras fases:**
+JSX fuera del return NO es error de sintaxis — es código muerto silencioso.
+Vite/Babel compilan a React.createElement() y descartan el resultado. Cero
+errores en consola, cero render. La regla operativa: cualquier JSX que escribas
+debe estar DENTRO de un return de un componente que efectivamente se monta.
+
+**Aprendizaje sobre división de tareas:**
+Crear componente nuevo desde cero → chat web suficiente.
+Debuggear "no se ve" cuando no hay errores en consola → Claude Code obligatorio
+(necesita correlacionar imports + estructura del return + wrapper padres).
+Aplicado correctamente en este Paso tras una falsa salida.
+
 **Versión:** 1.1
 **Fecha:** 23 Abril 2026 (tarde)
 **Cambios v1.1:** sección "Cómo se usa Claude (3 frentes)", corrección Gambarino Italic → Regular, checklist granular de Paso 4b, incorporación del bug activo
