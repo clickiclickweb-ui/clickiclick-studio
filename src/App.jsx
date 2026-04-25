@@ -1,4 +1,5 @@
 import { useSmoothScroll } from './hooks/useSmoothScroll';
+import { Signature } from './components/brand/Signature';
 
 function App() {
   useSmoothScroll();
@@ -71,6 +72,7 @@ function App() {
           Smooth scroll smoke test · scroll down
         </p>
       </div>
+
 
     </div>
   );
