@@ -237,23 +237,17 @@ Crear `<Signature />` React component en Fase 3 aunque no se use hasta Hero (Fas
 - ✅ Paso 1 — Rama reset/v2-foundation creada y pusheada
 - ✅ Paso 2 — src/ limpiado (blob 3D y paleta cream/terracotta fuera)
 - ✅ Paso 3 — Dependencias react-router-dom y split-type instaladas
-- ✅ Paso 4a — Sistema cromático oficial en CSS vars + Tailwind config
-- ✅ Paso 4b.1 — Fuentes descargadas (Fraunces + Switzer + Gambarino)
-- ✅ Paso 4b.2 — Fuentes movidas a `public/fonts/` con estructura por familia
-- ✅ Paso 4b.3 — Declaraciones `@font-face` en `global.css`
-- ✅ Paso 4b.4 — `index.html` limpio (eliminado `<link>` fantasma a Fontshare CDN)
-- ✅ Paso 4b.5 — Caché de Vite y carpeta `dist/` eliminados
+- ✅ Paso 4 — Sistema cromático + tipografía Fraunces/Switzer/Gambarino self-hosted (Fraunces y Gambarino cargando OK tras debugging de @font-face)
+- ✅ Paso 5 — Smooth scroll hook (useSmoothScroll.js, después migrado a Context en Paso 8)
+- ✅ Paso 6 — Signature component (SVG inline con currentColor)
+- ✅ Paso 7 — Layout base con nav fija
+- ✅ Paso 8 — React Router con rutas / y /work/:slug + cross-route nav
 
-### Pendiente inmediato
-- 🔴 Paso 4b.6 — Bug activo: Fraunces y Gambarino declaradas pero no solicitadas por el navegador en dev. Switzer sí carga. Pendiente de diagnóstico con Claude Code (leyendo index.html, main.jsx, App.jsx, global.css, tailwind.config.js, postcss.config.js, vite.config.js en paralelo).
-
-### Pendiente siguiente
-- Paso 5 — Smooth scroll hook (`useSmoothScroll.js`)
-- Paso 6 — Signature component (SVG inline con currentColor)
-- Paso 7 — Layout base con nav fija
-- Paso 8 — React Router con rutas `/` y `/work/:slug` (placeholder)
-- Paso 9 — Smoke test en localhost:5173
-- Paso 10 — Commit + push de cierre de Fase 3
+### Pendiente
+- ⏳ Fase 4 (Hero) — abrir conversación nueva en chat web
+- ⏳ Reemplazar 4 placeholders del Home (#hero, #work, #studio, #contact) con contenido real durante Fases 4–10
+- ⏳ Merge reset/v2-foundation → main al cerrar Fase 3 (solo si Vercel preview pasa verificación visual)
+- ⏳ Corregir INSPIRATIONS.md: "Gambarino Italic" → "Gambarino (Regular, accent)"
 
 ---
 
@@ -388,7 +382,67 @@ VS Code, pico, nano y otros editores pueden mostrar buffers obsoletos o cache st
 cat. Aplica especialmente despues de heredocs, paste largos, o cuando un editor
 muestra "modified" indicators dudosos.
 
-**Versión:** 1.1
-**Fecha:** 23 Abril 2026 (tarde)
-**Cambios v1.1:** sección "Cómo se usa Claude (3 frentes)", corrección Gambarino Italic → Regular, checklist granular de Paso 4b, incorporación del bug activo
-**Próxima actualización:** al cerrar Fase 3
+
+### ✅ FASE 3 PASO 8 — React Router + cross-route nav (Abril 27)
+- Creado src/context/SmoothScrollContext.jsx (Lenis migrado de hook a Context Provider)
+- Eliminado src/hooks/useSmoothScroll.js (reemplazado por el Context)
+- Creado src/components/ScrollToTop.jsx (gestión scroll en cambios de ruta + hash navigation)
+- Creado src/pages/Home.jsx (4 secciones placeholder: #hero, #work, #studio, #contact)
+- Creado src/pages/CaseStudy.jsx (placeholder con useParams para /work/:slug)
+- Reescrito src/components/layout/Nav.jsx (cross-route: pathname + useNavigate condicional)
+- Reescrito src/App.jsx (BrowserRouter + SmoothScrollProvider + Routes)
+- Configuración Lenis preservada exactamente del hook viejo (duration 1.8, easing custom,
+  smoothWheel, wheelMultiplier 1, touchMultiplier 2). Refactor de ubicación, no de comportamiento.
+- Verificado en localhost:5173: las 6 rutas funcionan, cross-route nav resuelve en un click,
+  refresh sobre /work/:slug no rompe (Vite SPA fallback), consola limpia.
+- Commits en reset/v2-foundation:
+  - 05e8c1f refactor(scroll): mover Lenis a Context Provider
+  - 3cb3895 feat(routing): ScrollToTop doble RAF + lenis.resize
+  - 69307b0 feat(pages): Home y CaseStudy placeholders
+  - 0f1d118 feat(nav): comportamiento cross-route
+  - 19d6df8 feat(routing): React Router / y /work/:slug
+
+**Aprendizaje critico sobre timing en route changes con smooth scroll:**
+Cuando una accion combina cambio de pathname Y hash en una sola navegacion
+(navigate('/#studio') desde /work/cyper), el scroll-to-hash NO puede ejecutarse
+de inmediato ni con setTimeout fijo. React necesita tiempo para desmontar la
+ruta vieja, montar la nueva, y que el browser haga layout del nuevo DOM antes
+de que existan los anchors. Un setTimeout(100) funciona "a veces" porque el
+margen es ajustado y depende del peso del componente que se monta.
+Patron correcto: doble requestAnimationFrame anidado.
+- Primer RAF: en cola tras el commit de React, pero el layout aun no esta confirmado.
+- Segundo RAF: garantiza que el browser ha hecho al menos un layout pass.
+Antes del scrollTo final, llamar a lenis.resize() para forzar recalculo de
+alturas del documento, y pasar el nodo resuelto (no el selector) a lenis.scrollTo.
+Aplicable a cualquier futura fase con transiciones entre rutas que dependan
+de elementos del DOM nuevo.
+
+**Aprendizaje sobre exposicion de instancias de librerias con ciclo de vida:**
+Cuando una libreria con ciclo de vida propio (Lenis, GSAP timelines, R3F scenes)
+necesita ser accedida desde multiples componentes hermanos, el patron correcto
+es Context, no window globals ni prop drilling. window.__lenis se mantiene en
+DEV para debugging desde consola, pero la fuente de verdad para componentes
+React es el Context. Coste: 10 lineas mas. Beneficio: arquitectura limpia que
+escala cuando otras secciones necesiten controlar el scroll (boton back-to-top
+en footer, pause/resume durante transicion Three.js, etc).
+
+**Aprendizaje sobre commits atomicos durante refactors:**
+Cuando un refactor toca varios archivos de forma logicamente independiente
+(mover hook a Context, crear componente nuevo, reescribir nav, anadir router),
+mejor 5 commits atomicos por unidad logica que 1 commit gigante. El historial
+cuenta la historia real del trabajo y permite git bisect si algo se rompe en
+el futuro. Coste minimo (estructurar git add por archivos), beneficio enorme
+en mantenibilidad.
+
+**Aprendizaje sobre commits que cuentan historia real vs historia inventada:**
+Si un archivo se escribio mal y se corrigio antes de llegar a produccion (caso
+ScrollToTop.jsx con setTimeout que nunca llego a main), commitear solo la
+version final es mas honesto que commitear la version rota + el fix encima.
+La regla: el historial de git debe contar lo que efectivamente paso en
+produccion, no el proceso interno de desarrollo. El proceso vive en
+SESSION-CONTEXT.md, donde si tiene sentido documentar el bug y el fix.
+
+**Versión:** 1.2
+**Fecha:** 27 Abril 2026
+**Cambios v1.2:** cierre Paso 8 con 5 commits, aprendizajes sobre timing en route changes, exposicion de instancias via Context, commits atomicos, historial honesto.
+**Próxima actualización:** al cerrar Fase 3 (merge de reset/v2-foundation a main).
