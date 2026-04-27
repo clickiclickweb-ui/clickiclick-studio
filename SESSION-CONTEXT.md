@@ -337,6 +337,57 @@ Debuggear "no se ve" cuando no hay errores en consola → Claude Code obligatori
 (necesita correlacionar imports + estructura del return + wrapper padres).
 Aplicado correctamente en este Paso tras una falsa salida.
 
+###  ✅ FASE 3 PASO 7 — Layout base con nav fija (Abril 27)
+- Creado src/components/layout/Layout.jsx (wrapper global con Nav + main#top + footer placeholder)
+- Creado src/components/layout/Nav.jsx (fija top, h-16, isotipo izquierda + 3 anchors right work/studio/contact con separadores middle-dot)
+- Modificado src/styles/global.css (anadidos scroll-padding-top: 4rem y .nav-anchor con transition + hover en media query hover/pointer-fine)
+- Modificado src/App.jsx (envuelto en Layout, eliminado import Signature ahora vive en Nav)
+- Creado .vscode/settings.json (silencia warnings @tailwind del linter CSS de VS Code)
+- Modificado .gitignore (anadida excepcion !.vscode/settings.json + limpieza de bloque Claude skills duplicado x3)
+- Verificado en localhost:5173: nav fija visible, blur al scrollear, isotipo cream, anchors cream-soft con hover a cream, scroll suave con Lenis intacto
+- Commits en reset/v2-foundation:
+  - 8dc68d9 feat(layout): nav fija + Layout wrapper (Paso 7)
+  - 65d5da1 fix(vscode): restore settings.json content (overwritten by gitignore content during heredoc paste)
+- Pendiente Paso 8: cross-route nav (TODO marcado en Nav.jsx) cuando llegue React Router
+
+**Aprendizaje critico sobre transmision de JSX por chat:**
+Las etiquetas JSX con atributos partidos en multiples lineas se corrompen al copiar
+desde el render del chat al terminal/VS Code: las aperturas tipo `<a` seguidas de
+salto-de-linea + indentacion + atributo `href` se PIERDEN silenciosamente. Sintoma:
+output del cat muestra `href="..."` huerfano sin la `<a` que lo abria, tambien
+duplicaciones en bucle como `{i < NAV_LINKS.leng              {i < NAV_LINKS.leng...`.
+Causa probable: el render del bloque de codigo en la app de Claude pierde caracteres
+en patrones especificos de JSX multilinea.
+Regla operativa para todo el proyecto: TODO JSX que se transmita por chat debe
+escribir cada elemento con sus atributos en UNA SOLA LINEA, aunque visualmente
+quede menos elegante. La fiabilidad de transmision pesa mas que la legibilidad
+del codigo fuente. Verificar SIEMPRE con `cat` despues de pegar.
+
+**Aprendizaje critico sobre heredocs grandes y redireccion:**
+Un heredoc largo puede acabar redirigiendose al archivo equivocado si hay sugerencias
+de autocompletado activas o estado raro en terminal. Sintoma: cat al archivo destino
+muestra contenido COMPLETO de otro archivo distinto al que se pretendia escribir.
+Caso real: `cat > .gitignore << EOF` con contenido de gitignore acabo escribiendo
+en `.vscode/settings.json` (probablemente por sugerencia de path al pegar).
+Regla operativa: para archivos pequeños (< 10 lineas tipo settings.json, configs JSON
+cortas) usar heredoc es seguro. Para archivos medianos o grandes, preferir editar
+en VS Code y verificar con cat. Tras CUALQUIER heredoc, hacer cat del archivo
+destino antes de continuar.
+
+**Aprendizaje sobre editores de terminal:**
+macOS Terminal abre `pico` cuando se pide `nano`, no nano real. pico tiene bugs
+conocidos con paste de texto largo y guardado silencioso fallido. La barra inferior
+del editor delata cual estas usando: si pone `^O Write Out` puede ser cualquiera de
+los dos, pero la pestana del terminal en VS Code lo identifica explicitamente
+("pico" o "nano"). Para ediciones criticas de configs, preferir VS Code o heredoc
+corto sobre pico/nano.
+
+**Aprendizaje sobre `cat` como juez supremo:**
+VS Code, pico, nano y otros editores pueden mostrar buffers obsoletos o cache stale.
+`cat ARCHIVO` siempre lee desde disco. Cada vez que se dude del estado de un archivo,
+cat. Aplica especialmente despues de heredocs, paste largos, o cuando un editor
+muestra "modified" indicators dudosos.
+
 **Versión:** 1.1
 **Fecha:** 23 Abril 2026 (tarde)
 **Cambios v1.1:** sección "Cómo se usa Claude (3 frentes)", corrección Gambarino Italic → Regular, checklist granular de Paso 4b, incorporación del bug activo
