@@ -1,13 +1,13 @@
 /* ============================================
-   CLICKICLICK.studio — Global Styles
-   Sistema tipográfico + cromático oficial + base reset
+   CLICKICLICK.studio - Global Styles
+   Sistema tipografico + cromatico oficial + base reset
    ============================================ */
 
 /* ============================================
-   FONT FACES — self-hosted
+   FONT FACES - self-hosted
    ============================================ */
 
-/* Fraunces — Display (editorial serif) */
+/* Fraunces - Display (editorial serif) */
 @font-face {
   font-family: 'Fraunces';
   font-style: normal;
@@ -15,7 +15,6 @@
   font-display: swap;
   src: url('/fonts/fraunces/Fraunces-500.woff2') format('woff2');
 }
-
 @font-face {
   font-family: 'Fraunces';
   font-style: italic;
@@ -23,7 +22,6 @@
   font-display: swap;
   src: url('/fonts/fraunces/Fraunces-500italic.woff2') format('woff2');
 }
-
 @font-face {
   font-family: 'Fraunces';
   font-style: normal;
@@ -31,7 +29,6 @@
   font-display: swap;
   src: url('/fonts/fraunces/Fraunces-700.woff2') format('woff2');
 }
-
 @font-face {
   font-family: 'Fraunces';
   font-style: normal;
@@ -40,7 +37,7 @@
   src: url('/fonts/fraunces/Fraunces-900.woff2') format('woff2');
 }
 
-/* Switzer — Body (sans-serif) */
+/* Switzer - Body (sans-serif) */
 @font-face {
   font-family: 'Switzer';
   font-style: normal;
@@ -48,7 +45,6 @@
   font-display: swap;
   src: url('/fonts/switzer/Switzer-Light.woff2') format('woff2');
 }
-
 @font-face {
   font-family: 'Switzer';
   font-style: normal;
@@ -56,7 +52,6 @@
   font-display: swap;
   src: url('/fonts/switzer/Switzer-Regular.woff2') format('woff2');
 }
-
 @font-face {
   font-family: 'Switzer';
   font-style: normal;
@@ -65,7 +60,7 @@
   src: url('/fonts/switzer/Switzer-Medium.woff2') format('woff2');
 }
 
-/* Gambarino — Display accent (signature frases) */
+/* Gambarino - Display accent (signature frases) */
 @font-face {
   font-family: 'Gambarino';
   font-style: normal;
@@ -75,35 +70,33 @@
 }
 
 /* ============================================
-   TAILWIND — directivas de inyección
+   TAILWIND - directivas de inyeccion
    ============================================ */
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* ============================================
-   CUSTOM PROPERTIES — sistema cromático oficial
+   CUSTOM PROPERTIES - sistema cromatico oficial
    ============================================ */
-
 :root {
-  /* BASE — 85% de la web */
+  /* BASE - 85% de la web */
   --ink:            #0A0706;
   --cream:          #EDE4CE;
   --cream-soft:     #B8AB90;
 
-  /* SIGNATURE — 25% */
+  /* SIGNATURE - 25% */
   --garnet:         #A31E38;
   --garnet-deep:    #6E1425;
 
-  /* CONTRAPUNTO — 15% */
+  /* CONTRAPUNTO - 15% */
   --teal-night:     #0B2E3E;
   --teal-luminous:  #7CAFAE;
 
-  /* ORO — ≤2%, solo 3 usos semánticos (MMXXVI, firma, ornamentales) */
+  /* ORO - hasta 2 por ciento, solo 3 usos semanticos (MMXXVI, firma, ornamentales) */
   --gold-aged:      #8A7046;
 
-  /* SECRETOS — ≤1%, una aparición única cada uno */
+  /* SECRETOS - hasta 1 por ciento, una aparicion unica cada uno */
   --moss:           #2D3A2A;
   --lavender-dust:  #9B8CB5;
 }
@@ -111,7 +104,6 @@
 /* ============================================
    BASE RESET
    ============================================ */
-
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -133,9 +125,30 @@ html, body {
 }
 
 /* ============================================
-   ACCESIBILIDAD — respeta prefers-reduced-motion
+   SCROLL BEHAVIOR
+   Anchors no quedan tapados por la nav fija (h-16 = 64px = 4rem)
    ============================================ */
+html {
+  scroll-padding-top: 4rem;
+}
 
+/* ============================================
+   NAV ANCHOR HOVER
+   Solo en pointers reales (no touch). Regla emil-design-eng.
+   ============================================ */
+.nav-anchor {
+  transition: color 200ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .nav-anchor:hover {
+    color: var(--cream);
+  }
+}
+
+/* ============================================
+   ACCESIBILIDAD - respeta prefers-reduced-motion
+   ============================================ */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
