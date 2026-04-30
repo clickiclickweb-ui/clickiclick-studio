@@ -446,3 +446,129 @@ SESSION-CONTEXT.md, donde si tiene sentido documentar el bug y el fix.
 **Fecha:** 27 Abril 2026
 **Cambios v1.2:** cierre Paso 8 con 5 commits, aprendizajes sobre timing en route changes, exposicion de instancias via Context, commits atomicos, historial honesto.
 **Próxima actualización:** al cerrar Fase 3 (merge de reset/v2-foundation a main).
+
+---
+
+## APRENDIZAJES PROYECTO AFFARY (Sesión 29-30 Abril 2026)
+
+Sesión maratónica de 14+ horas construyendo propuesta comercial
+premium en Figma para clienta Ana Rafaele (Lima, Perú). Aunque el
+proyecto Affary no es directamente CLICKICLICK.studio, los
+aprendizajes metodológicos son aplicables a TODO proyecto futuro
+con Claude Code o agentes de IA similares.
+
+### Configuración Figma + MCP
+
+- Los límites del MCP se calculan según donde está alojado el
+  archivo, NO según los planes de la cuenta. Archivos en
+  "Borradores personales" usan plan personal (Starter View = 6
+  calls/mes). Para usar plan Education con 3000 créditos/mes, el
+  archivo DEBE estar dentro de un proyecto del equipo Education.
+- Whoami funciona aunque use_figma esté bloqueado. Sirve para
+  verificar autenticación sin gastar créditos.
+- El comando `claude.ai` dentro de la app Claude Desktop activa
+  Claude for Chrome tools. No documentado pero funciona.
+- Font Helper de Figma no funciona en Mac Intel 2015 con macOS
+  Monterey. Solución: Inter como fallback de Switzer/Gambarino.
+- Figma Desktop consume mucha RAM. En Macs viejos, trabajar en
+  Figma web vía Chrome.
+
+### Metodología de trabajo con Claude Code (clave)
+
+Probamos tres filosofías:
+
+1. Coordenadas exactas estrictas: funciona pero las skills no
+   aportan, resultado correcto pero sin alma editorial
+2. Libertad creativa total: fracasa rotundamente. Claude Code
+   replica páginas anteriores sin innovar y comete errores
+   técnicos (solapamientos de título, decisiones inconsistentes)
+3. **Híbrida (coordenadas + invitación a sugerir)**: óptima
+
+**La metodología híbrida es replicable a cualquier proyecto futuro**.
+Estructura del prompt:
+
+- Bloque 1: Restricciones técnicas fijas (frame, paleta, fuentes)
+- Bloque 2: Contenido literal fijo (no parafraseable)
+- Bloque 3: Composición con coordenadas exactas
+- Bloque 4: Invitación a sugerir mejoras (técnicas y editoriales)
+- Bloque 5: Proceso en 2 fases (proponer → confirmar → construir)
+
+El patrón "consultar antes de ejecutar" es lo que diferencia
+trabajo correcto de trabajo excelente. Claude Code reporta
+sugerencias antes de aplicar, espera confirmación humana.
+
+### Diseño editorial premium - técnicas validadas
+
+- Drop cap editorial (letra inicial gigante en Fraunces Italic
+  granate sobre el primer párrafo) diferencia documento comercial
+  de objeto editorial premium tipo Wallpaper o Monocle.
+- Standfirst italic granate como bisagra entre título y cuerpo es
+  técnica de revistas premium que aporta sofisticación.
+- Romanos en gold-aged como anclas tipográficas que se repiten en
+  páginas distintas crean ritmo visual del documento completo.
+- Eliminar títulos redundantes en páginas continuación
+  (manteniendo solo subtítulo italic) crea sensación de spread
+  editorial y diferencia un documento de propuesta comercial
+  estándar.
+- Punto final después de títulos editoriales ("entendido.",
+  "trabajar.", "marca.") es detalle fino que pocos diseñadores
+  aplican.
+
+### Sistema cromático refinado
+
+- Granate oscuro #A31E38 NO funciona en textos pequeños sobre
+  fondo ink. Pierde legibilidad. Para precios pequeños y tags de
+  condiciones legales usar granate luminoso #C42548 (mismo matiz,
+  +luminosidad ~10%).
+- El gold-aged #8A7046 apaga el documento si se usa demasiado.
+  Mejor reservarlo para acentos puntuales (romanos, números de
+  página, autoría). El granate da más vida.
+- Diferenciación cream brillante #EDE4CE / cream-soft #B8AB90
+  entre títulos y descripciones es clave para sensación premium.
+  Es exactamente lo que separa "amateur" de "senior".
+
+### Tipografía y composición
+
+- Letter-spacing inversamente proporcional a longitud de palabra:
+  - Tags cortos (10-12 caracteres): 20-25%
+  - Tags largos (15+ caracteres): 10% máximo
+  - Tags muy largos rompen cohesión de lectura con spacing alto
+- Width insuficiente con letter-spacing alto corta palabras
+  (ejemplo real: "PLAZO" → "PLAZ", "INVERSIÓN" → "INVERS").
+  Verificar siempre que el width sea suficiente.
+- Footer DEBE ser invariable en todas las páginas de un documento
+  multipágina (excepto portada que puede tener footer más
+  relajado).
+- Header DEBE ser invariable en todas las páginas de un documento
+  multipágina.
+
+### Errores y patrones a evitar
+
+- Texto crítico (títulos, contenido legal) NUNCA dejarlo a libertad
+  creativa total de Claude Code. Genera solapamientos.
+- Variar el footer página a página rompe coherencia editorial.
+- Dejar texto sobre fondo oscuro en colores de baja luminosidad
+  hace que pierda legibilidad — verificar contraste.
+- JSX/código multilínea se corrompe al copiar de chat a terminal
+  (heredado de sesiones anteriores, confirmado de nuevo).
+
+### Aprendizaje meta sobre Diego como director creativo
+
+Durante la sesión Diego identificó intuitivamente:
+- Cuándo el proceso obstaculizaba la creatividad de las skills
+- Qué tratamientos cromáticos no funcionaban antes que Claude
+- Decisiones editoriales que mejoraban el documento (eliminar
+  título redundante de página VI, mantener portada con footer
+  diferente al estándar, granate luminoso para precios)
+
+**Este patrón "Diego propone dirección, Claude ejecuta con
+sugerencias técnicas" debe ser el modelo para todos los proyectos
+futuros donde Diego dirige creatividad y Claude aporta
+implementación + craft técnico.**
+
+---
+
+**Versión:** 1.2
+**Fecha:** 30 Abril 2026
+**Cambios v1.2:** Sección completa de aprendizajes del proyecto
+Affary aplicables a metodología de trabajo con Claude Code.
