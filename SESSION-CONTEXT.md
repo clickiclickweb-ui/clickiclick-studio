@@ -568,7 +568,79 @@ implementación + craft técnico.**
 
 ---
 
-**Versión:** 1.2
-**Fecha:** 30 Abril 2026
-**Cambios v1.2:** Sección completa de aprendizajes del proyecto
-Affary aplicables a metodología de trabajo con Claude Code.
+## SESIÓN 1 MAYO 2026 — Auditoría completa de skills + housekeeping
+
+Sesión dedicada a entender qué pueden hacer realmente las skills instaladas
+y cerrar la deuda técnica detectada. NO se tocó código de clickiclick.studio.
+
+### Trabajo realizado
+
+**Repo nuevo creado:** ~/CLICKICLICK/lab — laboratorio aparte para
+experimentación y documentación de skills. 3 commits iniciales.
+
+**Auditorías completadas:**
+- audits/SKILLS-AUDIT.md — 13 skills (12 locales + 1 global)
+- audits/SKILLS-AUDIT-AUXILIARES.md — 4 archivos auxiliares de la skill global
+
+**Documentos del lab generados:**
+- experiments/IDEAS-PARKING.md — 3 ideas aparcadas con contexto
+- experiments/PATTERNS-DEUDA.md — deuda técnica de 9 componentes de patterns.md
+
+**Mitigaciones aplicadas a la skill global** (~/.claude/skills/clickiclick-web-design/):
+- Notas de scope insertadas en design-tokens.md, stack.md, patterns.md
+- Bug de import Lenis corregido en patterns.md
+  (@studio-freight/react-lenis → lenis/react)
+
+### Hallazgos críticos
+
+1. La skill global mezclaba dos scopes sin separación: templates genéricos
+   de cliente vs identidad de clickiclick.studio. La paleta terracota +
+   Bespoke Serif vivía en archivos auxiliares como si fuera autoridad.
+   Mitigado con notas de cabecera explícitas.
+
+2. De 8 huecos detectados en la primera auditoría, 4 quedan así:
+   - GSAP + ScrollTrigger: PARCIAL
+   - React Three Fiber + drei: PARCIAL
+   - Bridge scroll → 3D (Lenis ↔ ScrollTrigger ↔ R3F): SIGUE CRÍTICO
+   - split-type: CUBIERTO
+
+3. El bridge scroll → 3D es el primer experimento natural del lab cuando
+   arranque. Pattern 1 (StringTune) y Pattern 3 ($10K sticky-canvas) de
+   INSPIRATIONS.md dependen de esto.
+
+### Aprendizajes
+
+**Protocolo de edición de archivos sin git:**
+grep diagnóstico → sed contexto → str_replace quirúrgico → cat verificación.
+Aplicable a cualquier edición de la skill global o archivos sensibles fuera
+de repos versionados.
+
+**Diferencia operativa entre "skills instaladas" y "skills conocidas":**
+tener algo instalado no significa saber qué hace. Auditar lo que hay antes
+de buscar lo que falta es lo que evita acumular herramientas sin usar.
+
+**El parking lot como herramienta de disciplina:**
+ideas que surgen mid-sesión van a IDEAS-PARKING.md, no se ejecutan en
+caliente. Aplicado con éxito sobre la idea de ampliación de paleta tonal
+(origen Instagram + refuerzo Affary).
+
+### Ideas aparcadas (lab/experiments/IDEAS-PARKING.md)
+
+1. Ampliación de paleta a escalas tonales (5 niveles por color base)
+2. Reorganización de la skill global (separar scopes genérico vs identidad)
+3. Migración a paquete Lenis actual (cerrada inline en esta sesión)
+
+### Pendiente al cerrar esta sesión
+
+- Pedir GitHub Student Pack y herramientas asociadas (decisión de hace 4 conversaciones)
+- Diseñar primer experimento del lab (bridge scroll→3D candidato natural)
+- Buscar skills externas que cubran huecos PARCIALES si el experimento lo requiere
+- Fase 4 de clickiclick.studio (Hero) sigue esperando
+
+---
+
+**Versión:** 1.3
+**Fecha:** 1 Mayo 2026
+**Cambios v1.3:** Sesión completa de auditoría de skills (13 + 4 auxiliares),
+housekeeping aplicado a la skill global, repo lab creado en ~/CLICKICLICK/lab
+con 3 commits iniciales (2 audits + housekeeping).
