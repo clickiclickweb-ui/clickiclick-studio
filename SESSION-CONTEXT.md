@@ -637,10 +637,151 @@ caliente. Aplicado con éxito sobre la idea de ampliación de paleta tonal
 - Buscar skills externas que cubran huecos PARCIALES si el experimento lo requiere
 - Fase 4 de clickiclick.studio (Hero) sigue esperando
 
+## SESIÓN 5 MAYO 2026 — Cliente Andrés Manuel + universo FRUTA MADRE + reset operativo
+
+Sesión completa de tarde dedicada a responder a un lead de JobToday
+(Andrés Manuel S., marca de reventa de sneakers en Barcelona, oferta
+publicada a €48). Trabajo realizado como Diego freelance, no como
+CLICKICLICK.studio, por decisión consciente de no contaminar el
+posicionamiento premium de la marca con un ticket bajo.
+
+### Trabajo realizado
+
+**Material generado para la propuesta:**
+- 2 imágenes producto de unas Vans personales (frame 1 limpio en
+  charcoal + frame 2 despiece, ambas con Nano Banana / Gemini
+  desde foto original con móvil)
+- 5 imágenes de campaña para FRUTA MADRE — marca ficticia construida
+  como ejemplo de portfolio: streetwear español con humor, universo
+  de fútbol amateur ficticio (F.M. C.F. Support Crew), copy editorial
+  ("Rendimiento Excelente. Calidad Explícita."), tipografías y
+  ubicaciones urbanas reales
+- 1 mockup de feed de Instagram completo de FRUTA MADRE
+- Mensaje JobToday redactado en tono que coincide con el del cliente
+  (emojis controlados, registro cercano-profesional)
+
+**Reel de producto NO se entregó.** Intentos fallidos con Veo 3
+(rotación + ensamblaje no funciona, frame final pesa más que inicial),
+intento con Higgsfield DoP (no documentado el resultado en sesión).
+Decisión final: enviar sin reel, dejarlo para llamada o segunda entrega.
+
+**Mensaje enviado a Andrés con las 6 imágenes y propuesta de llamada
+30-45 min jueves 7 o viernes 8, online o presencial.**
+
+### Decisiones estratégicas tomadas
+
+1. Diego responde como freelance, no como CLICKICLICK — para no
+   diluir ticket promedio del estudio
+2. FRUTA MADRE se presenta como "marca propia en desarrollo", no
+   como cliente real — framing que convierte mockup de Instagram
+   en argumento poderoso en lugar de riesgo de credibilidad
+3. Llamada con duración realista (30-45 min) y opciones online/presencial
+4. Sin precios concretos en chat — derivados a llamada para evitar
+   anclaje bajo
+
+### Aprendizajes críticos sobre colaboración con Claude
+
+**Aprendizaje 1 — Cuándo Claude debe ceder control creativo a Diego:**
+Claude tiene sesgo de estructurar, normativizar y limitar cuando una
+idea creativa de Diego se aleja de patrones conocidos. Tres veces en
+esta sesión Diego corrigió a Claude sobre direcciones que Claude había
+descartado prematuramente: el plano cinematográfico con rotación, el
+universo expandido FRUTA MADRE como fútbol amateur, el mockup de
+Instagram como entregable legítimo. Las tres veces Diego tenía razón.
+**Regla operativa:** cuando Diego dice "abre, sé creativo, deja que
+pase algo", Claude cede control. El criterio creativo de Diego está
+más entrenado que el instinto de control de Claude. No corregir a
+Diego cuando dice que Claude está siendo demasiado estricto.
+
+**Aprendizaje 2 — Riesgo de gold-plating en proyectos comerciales:**
+Una sesión que debía cerrar en 90 minutos (mensaje + 2-3 piezas) se
+extendió a 8+ horas de iteración creativa. La calidad final del
+material es excelente, pero el coste de oportunidad fue alto: cliente
+escribió a las 12h y Claude/Diego respondieron a las 19:30h. Cada
+hora de retraso reduce probabilidad de respuesta del cliente.
+**Regla operativa:** en proyectos comerciales con cliente esperando,
+Claude debe nombrar explícitamente cuando se detecta gold-plating
+y proponer cierre, sin imponerlo.
+
+**Aprendizaje 3 — Tono de mensaje debe matchear al del receptor:**
+Primera redacción del mensaje a Andrés salió en registro
+business-formal cuando Andrés escribe en registro cercano-profesional
+con emojis controlados (🙌 👀 🔥). Ajuste final reciprocó su tono
+sin imitar. Aplicable a cualquier comunicación comercial: leer 2-3
+veces el mensaje del receptor antes de redactar respuesta.
+
+**Aprendizaje 4 — Verificación visual antes de afirmar erratas:**
+Claude afirmó que un texto en una imagen tenía errata cuando en
+realidad era perspectiva por doblez de la prenda. Diego corrigió.
+**Regla operativa:** antes de identificar errores en imágenes
+generadas, asumir que la lectura propia puede estar afectada por
+ángulo/luz/perspectiva y matizar.
+
+### Reset operativo solicitado por Diego (5 mayo 2026)
+
+Diego solicitó formalmente un reset del modo de colaboración después
+de la sesión de tarde + experiencia previa con proyecto de su novia
+en Claude Code. Reglas nuevas en orden de aplicación:
+
+1. **Por defecto: empuje, no freno.** Cuando Diego dice "intentémoslo",
+   se intenta. Si Claude tiene preocupación, una línea, no cinco
+   párrafos, y se sigue salvo que Diego pare.
+
+2. **Cero tecnicismos cuando no aportan al resultado.** Diego no
+   quiere saber sobre `useRef`, `gsap.ticker`, configuraciones de
+   Vite, etc. Quiere saber qué cambia visualmente o funcionalmente.
+   Las decisiones de implementación las toma Claude/Claude Code sin
+   exponerlas a menos que sean relevantes para una decisión de Diego.
+
+3. **Lenguaje de resultado, no de implementación.** "Esta sección
+   se queda fija mientras el texto pasa por encima al hacer scroll"
+   sí. "Position sticky con transform translateY" no.
+
+4. **Cuando Diego dice "decide tú", Claude decide y avanza.** Sin
+   checklist de pros/contras de tres opciones. Una decisión, una
+   frase de por qué, ejecutar. Rectificar después si no encaja.
+
+5. **Si Claude se equivoca, lo dice claro y cambia.** Sin auto-
+   flagelarse. "Tenías razón en X. Aplico Y. Sigo."
+
+6. **Cuando Diego dice que no está cansado, Claude no insiste.** Una
+   vez. Si Diego dice que no, no se vuelve a sacar en el mismo turno.
+
+7. **Herramientas por defecto sí.** Si una herramienta puede
+   acelerar (Claude Code, skill, app externa), se propone y se
+   prueba. Setup de 5-10 min vs horas peleando sin ella es
+   matemática obvia.
+
+8. **Riesgo creativo por defecto sí.** Cuando una idea de Diego
+   se aleja de lo seguro, se arranca. Si no funciona, se rectifica.
+
+**Excepciones — los 2 únicos casos donde Claude SÍ frena:**
+- Cuando una decisión va a romper algo concreto que ya está
+  funcionando en CLICKICLICK
+- Cuando algo contradice el BRIEF de forma estratégica fuerte
+  (no estética, no preferencia: estratégica)
+
+En esos dos casos: una frase clara sin alarmismo, explicación en
+lenguaje de resultado, opciones concretas para resolver, Diego decide.
+**Si Diego dice "seguimos adelante", Claude sigue adelante sin volver
+a sacarlo.** Sin re-debatir. Sin sembrar duda después de la decisión
+tomada.
+
+### Pendiente al cerrar esta sesión
+
+- Esperar respuesta de Andrés Manuel a la propuesta enviada
+- Preparar la llamada del jueves 7 / viernes 8: 3 opciones de
+  paquete con cifras finales, mini-script con 5 preguntas para
+  hacer al cliente, decisión de techo y suelo de precio
+- Arranque del lab (sesión siguiente): primera prueba real de
+  skills threejs-* instaladas el 1 de mayo, con foco en ver
+  resultados visuales tangibles
+- Fase 4 de clickiclick.studio (Hero) sigue esperando
+
 ---
 
-**Versión:** 1.3
-**Fecha:** 1 Mayo 2026
-**Cambios v1.3:** Sesión completa de auditoría de skills (13 + 4 auxiliares),
-housekeeping aplicado a la skill global, repo lab creado en ~/CLICKICLICK/lab
-con 3 commits iniciales (2 audits + housekeeping).
+**Versión:** 1.4
+**Fecha:** 5 Mayo 2026
+**Cambios v1.4:** Sesión completa cliente Andrés Manuel + construcción
+universo FRUTA MADRE + 4 aprendizajes críticos + reset operativo
+formal del modo de colaboración.
