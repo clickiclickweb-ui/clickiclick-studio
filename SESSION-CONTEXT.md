@@ -785,3 +785,108 @@ tomada.
 **Cambios v1.4:** Sesión completa cliente Andrés Manuel + construcción
 universo FRUTA MADRE + 4 aprendizajes críticos + reset operativo
 formal del modo de colaboración.
+
+---
+
+## SESIÓN 5-6 MAYO 2026 — Lab First Light + decisión Decoded
+
+Sesión de aproximadamente 7 horas que cubrió tres frentes:
+
+1. **EXPERIMENTO FIRST LIGHT** (`lab/experiments/first-light/`) — CERRADO
+   Bridge scroll → 3D demostrado funcional con 5 capas conviviendo:
+   postprocessing atmosférico, shader cristal sobre superficie,
+   cursor parallax, cámara orquestada en 4 fases, coreografía
+   simétrica ensamble→caos→reensamble sobre 11 letras CLICKICLICK
+   (TextGeometry Optimer Bold). HUECO 5 de la auditoría 1 mayo
+   (bridge Lenis ↔ ScrollTrigger ↔ R3F) cerrado oficialmente.
+   Mergeado a main del lab.
+
+   Aprendizajes técnicos transferibles a clickiclick.studio v2
+   documentados en `lab/experiments/first-light/NOTES.md`. Lo más
+   crítico: bug TextGeometry three 0.184 (parámetro `height`
+   deprecated, ahora `depth`, default catastrófico Z=50 silencioso),
+   centrado de TextGeometry no automático (requiere translate por
+   bbox), playWindow con rampas largas para evitar saltos
+   perceptibles.
+
+2. **EVOLUCIÓN ESTRATÉGICA DEL CONCEPTO DE PORTFOLIO**
+   Durante la sesión Diego refinó la idea narrativa de la web
+   principal. Posición definitiva:
+
+   - CLICKICLICK.studio v2 NO es portfolio multi-mundo de agencia
+   - ES portfolio de autor donde la firma manuscrita de Diego
+     funciona como hilo conductor a través de 3-4 mundos visuales
+     (elegante clásico / futurista tecnológico / arquitectónico /
+     identidad CLICKICLICK base)
+   - La firma es el viajero, los mundos son los escenarios
+   - Cada mundo reinterpreta la firma en su propio lenguaje
+     (grabado dorado, extruida 3D shader, integrada en escenas
+     arquitectónicas, granate cristal sobre ink)
+   - Lógica de logo en 3 niveles: logotipo + isotipo + símbolo
+
+   Esta hipótesis entra a Decoded como dirección fuerte que la
+   investigación debe confirmar y refinar al máximo nivel,
+   no replantear desde cero.
+
+3. **PLANIFICACIÓN DE DECODED**
+   Fase de investigación estratégica antes de Fase 4 del proyecto.
+   Detalle completo en sección siguiente.
+
+## DECODED — fase de investigación estratégica
+
+**PROPÓSITO**
+Decodificar el ADN narrativo y técnico de los estudios top-tier
+para elevar el nivel de ejecución de clickiclick.studio v2 antes
+de tocar el Hero. Validar y refinar la hipótesis "firma como hilo
+conductor multi-mundo".
+
+**MATERIAL FUENTE**
+Capturas Resources Saver de:
+- Lusion (lusion.co) — 251 archivos, 65 MB, completo
+- Neu Web Studio (neuwebstudio.com) — 115 archivos, 13 MB, completo
+- Active Theory (activetheory.net) — 32 archivos, 38 MB, parcial
+  (videos de case studies son redirects, no descargados)
+- Studio Feixen (studiofeixen.ch) — DESCARTADO (descarga rota)
+
+**ESTRUCTURA EN 3 SESIONES**
+
+**Sesión 1 — Lanzamiento de investigación asíncrona (1-2h)**
+Diego lanza 3 prompts de Research del chat web claude.ai en
+paralelo. Mientras corren, redactamos juntos los prompts para CC
+de la sesión 2. Outputs: 3 informes de Research recibidos +
+plan estructurado para CC.
+
+**Sesión 2 — Decodificación local con CC (3-4h, partible en dos)**
+CC trabaja sobre las 3 webs descargadas con prompts largos que
+no piden respuesta inmediata sino acumulación de hallazgos en
+archivos del lab. Patrón por web: estructura narrativa, sistema
+cromático real, técnicas de scroll, técnicas de transición,
+stack inferido. Salida: documentación en `lab/decoded-sources/findings/`.
+
+**Sesión 3 — Síntesis estratégica con Diego (2h, chat web)**
+Lectura conjunta de los 3 informes Research + las 3
+decodificaciones CC. Cruce de hallazgos. Validación o refutación
+de la hipótesis multi-mundo + firma. Salida: actualización de
+INSPIRATIONS.md, posibles skills nuevas, decisión clara sobre
+estructura del Hero y secciones.
+
+**CALENDARIO**
+2 semanas máximo distribuido en sesiones. Total estimado: 6-8h.
+
+**CRITERIO DE ÉXITO DE DECODED**
+Al cerrar la fase, Diego debe poder responder con datos:
+- ¿Lusion/Neu/Active Theory hacen aparecer su mark recurrentemente
+  sin saturar? Si sí, ¿cómo?
+- ¿Hay precedentes de webs multi-mundo con firma de autor? ¿Funcionan
+  o se diluyen?
+- ¿Qué patrones técnicos concretos son obligatorios para alcanzar
+  ese nivel (Three.js avanzado, shaders, transiciones DOM↔WebGL)?
+- ¿Cuál es la curva narrativa exacta que vamos a construir en el Hero
+  v2 y las secciones siguientes?
+
+---
+
+**Versión:** 1.5
+**Fecha:** 7 mayo 2026 (madrugada)
+**Cambios v1.5:** cierre First Light + concepto refinado de portfolio
+con firma como hilo conductor + planificación completa de Decoded.
