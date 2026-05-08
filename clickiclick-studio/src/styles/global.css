@@ -1,0 +1,285 @@
+/* ============================================
+   CLICKICLICK.studio - Global Styles
+   Sistema tipografico + cromatico oficial + base reset
+   ============================================ */
+
+/* ============================================
+   FONT FACES - self-hosted
+   ============================================ */
+
+/* Fraunces - Display (editorial serif) */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/fraunces/Fraunces-500.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/fraunces/Fraunces-500italic.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/fraunces/Fraunces-700.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('/fonts/fraunces/Fraunces-900.woff2') format('woff2');
+}
+
+/* Switzer - Body (sans-serif) */
+@font-face {
+  font-family: 'Switzer';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('/fonts/switzer/Switzer-Light.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Switzer';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/switzer/Switzer-Regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Switzer';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/switzer/Switzer-Medium.woff2') format('woff2');
+}
+
+/* Gambarino - Display accent (signature frases) */
+@font-face {
+  font-family: 'Gambarino';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/gambarino/Gambarino-Regular.woff2') format('woff2');
+}
+
+/* ============================================
+   TAILWIND - directivas de inyeccion
+   ============================================ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   CUSTOM PROPERTIES - sistema cromatico oficial
+   ============================================ */
+:root {
+  /* BASE - 85% de la web */
+  --ink:            #0A0706;
+  --cream:          #EDE4CE;
+  --cream-soft:     #B8AB90;
+
+  /* SIGNATURE - 25% */
+  --garnet:         #A31E38;
+  --garnet-deep:    #6E1425;
+
+  /* CONTRAPUNTO - 15% */
+  --teal-night:     #0B2E3E;
+  --teal-luminous:  #7CAFAE;
+
+  /* ORO - hasta 2 por ciento, solo 3 usos semanticos (MMXXVI, firma, ornamentales) */
+  --gold-aged:      #8A7046;
+
+  /* SECRETOS - hasta 1 por ciento, una aparicion unica cada uno */
+  --moss:           #2D3A2A;
+  --lavender-dust:  #9B8CB5;
+}
+
+/* ============================================
+   BASE RESET
+   ============================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--ink);
+  color: var(--cream);
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* ============================================
+   SCROLL BEHAVIOR
+   Anchors no quedan tapados por la nav fija (h-16 = 64px = 4rem)
+   ============================================ */
+html {
+  scroll-padding-top: 4rem;
+}
+
+/* ============================================
+   NAV ANCHOR HOVER
+   Solo en pointers reales (no touch). Regla emil-design-eng.
+   ============================================ */
+.nav-anchor {
+  transition: color 200ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .nav-anchor:hover {
+    color: var(--cream);
+  }
+}
+
+/* ============================================
+   MASK CLIP - utilidad para reveal editorial ascendente
+   Wrapper inline-block con overflow:hidden por char/word.
+   El contenido interior (.char / .word de split-type) se anima
+   desde translateY(110%) hasta 0 dando el efecto de mascara
+   ascendente tipo Royal Palace / Lusion sin flicker.
+   ============================================ */
+.mask-clip {
+  display: inline-block;
+  overflow: hidden;
+  line-height: 1.15;
+  vertical-align: baseline;
+}
+
+/* ============================================
+   MANIFESTO - drop cap editorial + signature inline + ritmo de lectura
+   El primer parrafo lleva ::first-letter drop cap.
+   Frases signature inline en italic granate (acto I, 25 por ciento de
+   protagonismo cromatico). Tipografia Fraunces 500 para texto largo:
+   prosa de revista, no UI. Medida 60ch maxima para legibilidad.
+   ============================================ */
+.manifesto-paragraph {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(18px, 1.55vw, 22px);
+  line-height: 1.55;
+  color: var(--cream);
+  letter-spacing: 0.005em;
+}
+
+.manifesto-paragraph + .manifesto-paragraph {
+  margin-top: 1.5em;
+}
+
+/* Drop cap: ::first-letter no atraviesa spans inline por defecto. Como
+   split-type envuelve "Lorem" en <span class="word">, aplicamos el pseudo
+   directamente al primer .word del parrafo is-first. Los .word son
+   display:inline-block (split-type), spec valida para ::first-letter.
+   El selector hijo directo > evita matchear words dentro de descendientes
+   como .signature-phrase (que tambien split-type wrappea con .word). */
+.manifesto-paragraph.is-first > .word:first-child::first-letter {
+  float: left;
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 5.4em;
+  line-height: 0.86;
+  margin: 0.05em 0.1em 0 -0.04em;
+  color: var(--garnet);
+}
+
+.signature-phrase {
+  font-style: italic;
+  color: var(--garnet);
+  font-weight: 500;
+}
+
+/* split-type words inicial: invisible. La animacion via IntersectionObserver
+   los muestra con stagger por word. */
+.manifesto-paragraph .word {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+/* ============================================
+   SELECTED WORK - 3 cards con paleta scoped por data-project
+   El acto II del manifiesto narrativo: la paleta del cliente vive
+   dentro de la capsula del proyecto (image area en hover). El marco
+   general (titles, tags, year) se queda en cream/cream-soft/gold
+   para no romper la voz del estudio.
+   ============================================ */
+.work-card {
+  cursor: pointer;
+}
+
+.work-card[aria-disabled='true'] {
+  cursor: default;
+}
+
+.work-image {
+  background-color: rgba(237, 228, 206, 0.04);
+  transition: background-color 500ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.work-image-label {
+  transition: opacity 400ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .work-card[data-project='cyper']:hover .work-image {
+    background-color: rgba(92, 122, 62, 0.88);
+  }
+  .work-card[data-project='velox']:hover .work-image {
+    background-color: rgba(255, 69, 0, 0.85);
+  }
+  .work-card[data-project='salon-luna']:hover .work-image {
+    background-color: rgba(184, 95, 63, 0.85);
+  }
+  .work-card:hover .work-image-label {
+    opacity: 0;
+  }
+}
+
+/* ============================================
+   SERVICES CTA - link "hablemos" a #contact
+   Cream -> garnet en hover, subrayado animado solo en hover (regla
+   emil-design-eng: hovers solo en pointers reales, transiciones <300ms,
+   transition: color/text-decoration especificadas, no transition all).
+   ============================================ */
+.services-cta {
+  text-decoration-line: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.18em;
+  transition:
+    color 220ms cubic-bezier(0.23, 1, 0.32, 1),
+    text-decoration-color 220ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .services-cta:hover {
+    color: var(--garnet);
+    text-decoration-color: var(--garnet);
+  }
+}
+
+/* ============================================
+   ACCESIBILIDAD - respeta prefers-reduced-motion
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
